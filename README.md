@@ -1,2 +1,2 @@
 # CP
-This is for CP in C++
+This is for CP in C++.
