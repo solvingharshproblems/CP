@@ -2,13 +2,13 @@
 using namespace std;
 const int MOD=1e9+7;
 void solve(){
-    int n;
+    long long n;
     cin>>n;
-    vector<int> a(n);
+    vector<long long> a(n);
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
-    int count1=0,count0=0;
+    long long count1=0,count0=0;
     for(int i=0;i<n;i++){
         if(a[i]==0){
             count0++;
@@ -17,7 +17,7 @@ void solve(){
             count1++;
         }
     }
-    int res=pow(2,count0)*count1;
+    long long res=pow(2,count0)*count1;
     cout<<res<<endl;
 }
 int main(void){
