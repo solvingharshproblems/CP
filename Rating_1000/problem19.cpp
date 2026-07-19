@@ -15,10 +15,11 @@ void solve(){
     sort(map.rbegin(),map.rend());
     vector<int> res(n+1,0);
     res[0]=0;
-    int minutes=0,coordinate=1;
+    long long minutes=0;
+    int coordinate=1;
     for(int i=0;i<n;i++){
         res[map[i].second+1]=coordinate;
-        minutes+=2*abs(coordinate)*map[i].first;
+        minutes+=2LL*abs(coordinate)*map[i].first;
         if(coordinate<0){
             coordinate=abs(coordinate)+1;
         }
