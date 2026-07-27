@@ -10,10 +10,12 @@ int __gcd(int a,int b){
 }
 void precompute(){
     for(int i=1;i<=1000;i++){
-        for(int j=i+1;j<=1000;j++){
+        for(int j=i;j<=1000;j++){
             if(__gcd(i,j)==1){
                 pairs[i].push_back(j);
-                pairs[j].push_back(i);
+                if(i!=j){
+                    pairs[j].push_back(i);
+                }
             }
         }
     }
