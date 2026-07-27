@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int MOD=1e9+7;
-int __gcd(int a,int b){
+long long GCD(long long a,long long b){
     if(b==0){ 
         return a;
     }
-    return __gcd(b,a%b);
+    return GCD(b,a%b);
 }
 void solve(){
     long long n;
@@ -18,8 +18,8 @@ void solve(){
     long long total=accumulate(v.begin(),v.end(),0LL);
     for(int i=0;i<n-1;i++){
         sum+=v[i];
-        int x=__gcd(total-sum,sum);
-        res=max(res,(long long)x);
+        long long x=GCD(total-sum,sum);
+        res=max(res,x);
     }
     cout<<res<<endl;
 }
