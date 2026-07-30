@@ -1,12 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int MOD=1e9+7;
-long long __gcd(long long a,long long b){
-    if(b==0) return a;
-    return __gcd(b,a%b);
+long long GCD(long long a,long long b){
+    while(b){
+        long long t=a%b;
+        a=b;
+        b=t;
+    }
+    return a;
 }
 long long LCM(long long a,long long b){
-    return (a*b)/__gcd(a,b);
+    return (a/GCD(a,b))*b;
 }
 void solve(){
     long long n,x,y;
@@ -14,13 +18,9 @@ void solve(){
     long long both=n/LCM(x,y);
     long long positive=n/x-both;
     long long negative=n/y-both;
-    long long res=0;
-    for(long long i=n;i>n-positive;i--){
-        res+=i;
-    }
-    for(long long i=1;i<=negative;i++){
-        res-=i;
-    }
+    long long sumLargest=(2*n-positive+1)*positive/2;
+    long long sumSmallest=negative*(negative+1)/2;
+    long long res=sumLargest-sumSmallest;
     cout<<res<<endl;
 }
 int main(void){
