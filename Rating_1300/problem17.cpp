@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int MOD=1e9+7;
+#define int long long
 void solve(){
     int n,m;
     cin>>n>>m;
@@ -13,11 +14,11 @@ void solve(){
         cin>>c[i];
     }
     sort(k.begin(),k.end());
-    int res=0,x=0;
+    int res=0,p=0;
     for(int i=n-1;i>=0;i--){
-        if(x<m && c[x]<=c[k[i]-1]){
-            res+=c[x];
-            x++;
+        if(p<m && c[p]<=c[k[i]-1]){
+            res+=c[p];
+            p++;
         } 
         else{
             res+=c[k[i]-1];
@@ -25,8 +26,7 @@ void solve(){
     }
     cout<<res<<endl;
 }
-
-int main(void){
+int32_t main(void){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int t=1;
