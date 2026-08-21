@@ -4,22 +4,22 @@ int main(){
     string s;
     cin>>s;
     int n=s.length();
-    vector<vector<int>> dp(n+1,vector<int>(4,0));
-    for(int i=0;i<n;i++){
-        dp[i][0]=1;
-    }
-    for(int i=1;i<n;i++){ 
-		if(s[i]=='v' && s[i-1]=='v'){
-			dp[i+1][1]+=dp[i-1][0]; 
-			dp[i+1][3]+=dp[i-1][2]; 
-		} 
-        else if(s[i]=='o'){
-			dp[i+1][2]+=dp[i][1];
+    vector<long long> dp(n+1,0);
+    for(int i=n-2;i>=0;i--){
+        dp[i]=dp[i+1];
+        if(s[i]=='v' && s[i+1]=='v'){
+            dp[i]++;
 		}
-		dp[i+1][1]+=dp[i][1];
-		dp[i+1][2]+=dp[i][2];
-		dp[i+1][3]+=dp[i][3];
-	}
-	cout<<dp[n][3]<<endl;
+    }
+    long long sum=0,res=0;
+    for(int i=0;i<n;i++){
+        if(s[i]=='o'){
+            res+=sum*dp[i+1];
+        }
+        if(i>0 && s[i]=='v' && s[i-1]=='v'){
+            sum++;
+        }
+    }
+    cout<<res<<endl;
     return 0;
 }
